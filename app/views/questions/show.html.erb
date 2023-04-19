@@ -17,6 +17,8 @@
 
 <h2 class="mb-3">Write your answer</h2>
 
+<%= render "layouts/shared/errors", object: @answer %>
+
 <%= form_with model: [@question, @answer] do |f| %>
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
