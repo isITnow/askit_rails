@@ -44,6 +44,6 @@ class QuestionsController < ApplicationController
   end
 
   def get_question
-    @question = Question.find_by id: params[:id]
+    @question = Question.find params[:id]
   end
 end
