@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :get_question, only: %i[edit, update, show, destory]
+  before_action :get_question, only: %i[edit update show destory]
 
   def show
   end
