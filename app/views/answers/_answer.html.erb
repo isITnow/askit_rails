@@ -9,10 +9,8 @@
       </div>
       <div class="card-footer text-body-secondary">
         <small>
-          Updated <%= time_ago_in_words(answer.updated_at) %> ago
-        </small> |
-        <small>
-          Created <%= time_ago_in_words(answer.created_at) %> ago
+          Created <%= time_ago_in_words(answer.created_at) %> ago,
+          edited <%= time_ago_in_words(answer.updated_at) %> ago
         </small>
       </div>
   </article>
