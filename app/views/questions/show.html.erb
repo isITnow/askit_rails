@@ -13,8 +13,7 @@
 
 <%= link_to 'Show', question_path(@question), class: 'btn btn-primary' %> 
 <%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-info' %>
-<%= link_to 'Destroy', question_path(@question), class: 'btn btn-danger',
-  data: {method: :delete, confirm: 'Are you sure?'} %>
+<%= link_to 'Destroy', question_path(@question), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
 
 <hr class="my-4" />
 <h2 class="mb-3">Write your answer</h2>
@@ -25,15 +24,14 @@
 <h2 class="mb-3">Answers</h2>
 
 <% @answers.each do |answer|  %>
-  <article class="mb-3 card">
+  <article class="mb-3 card" id="answer-<%= answer.id %>">
     <div class="card-body">
       <p class="card-text">
         <%= answer.body %>
       </p>
       <div class="">
         <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-info btn-sm' %>
-        <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger btn-sm',
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></div>
+        <%= link_to 'Delete', question_answer_path(@question, answer), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger btn-sm' %></div>
       </div>
       <div class="card-footer text-body-secondary">
         <small>
