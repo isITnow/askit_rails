@@ -12,7 +12,7 @@
   </head>
   <body>
     <%= yield :main_menu %>
-    <main class="container mt-3">
+    <main class="container py-4">
       <% flash.each do |k, v| %>
         <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
       <% end %>
