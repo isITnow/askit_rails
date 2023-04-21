@@ -23,4 +23,9 @@
 <hr class="my-4" />
 <h2 class="mb-3">Answers</h2>
 
+
+<%= paginate @answers %>
+
 <%= render(partial: "answers/answer", collection: @answers, as: :answer, locals: {question: @question}) || "There are no answers" %>
+
+<%= paginate @answers %>

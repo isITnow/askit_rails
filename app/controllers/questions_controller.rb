@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
-    @answers = @question.answers.all
+    @answers = @question.answers.all.page(params[:page])
   end
 
   def destroy
