@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
-    @answers = @question.answers.all.page(params[:page])
+    @pagy, @answers = pagy(@question.answers.all)
   end
 
   def destroy
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all.page params[:page]
+    @pagy, @questions = pagy(Question.all)
   end
 
   def new
