@@ -3,7 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    renred plain: params.to_yaml
+    user = User.find_by email: params[:email]
+    if user&.authenticate(params[:password])
+      sign_in user
+      flash[:success] = "Welcome back, #{user.name}!"
+      redirect_to root_path
+    else
+      flash.now[:warning] = "Incorrect email and/or password"
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
