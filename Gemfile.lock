@@ -241,7 +241,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   rubocop (~> 1.50)
   rubocop-performance (~> 1.17)
-  rubocop-rails (~> 2.19)
+  rubocop-rails
   sassc-rails
   sprockets-rails
   stimulus-rails

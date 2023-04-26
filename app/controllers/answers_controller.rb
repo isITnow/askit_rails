@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   before_action :set_question!
   before_action :set_answer!, except: [:create]
@@ -9,34 +11,30 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.build answer_params
     if @answer.save
-      flash[:success] = "Answer created!"
+      flash[:success] = 'Answer created!'
       redirect_to question_path(@question)
     else
       @answers = @question.answers.order created_at: :desc
-      render "questions/show", status: :unprocessable_entity
+      render 'questions/show', status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
-  
+  def edit; end
 
   def update
     if @answer.update answer_params
-      flash[:success] = "Answer updated!"
+      flash[:success] = 'Answer updated!'
       redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
     else
       render :edit, status: :unprocessable_entity
     end
   end
-  
 
   def destroy
     @answer.destroy
-      flash[:success] = "Answer deleted!"
-      redirect_to question_path(@question)
+    flash[:success] = 'Answer deleted!'
+    redirect_to question_path(@question)
   end
-  
 
   private
 
@@ -47,7 +45,7 @@ class AnswersController < ApplicationController
   def set_answer!
     @answer = @question.answers.find params[:id]
   end
-  
+
   def answer_params
     params.require(:answer).permit(:body)
   end
