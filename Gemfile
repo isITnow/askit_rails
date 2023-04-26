@@ -64,10 +64,14 @@ group :development, :test do
 end
 
 group :development do
-# Generates fake text data
-gem 'faker', "~> 3"
+  # Generates fake text data
+  gem 'faker', "~> 3"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # RuboCop
+  gem 'rubocop', '~> 1.50', require: false
+  gem 'rubocop-rails', '~> 2.19', require: false
+  gem 'rubocop-performance', '~> 1.17', require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
