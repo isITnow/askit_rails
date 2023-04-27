@@ -3,13 +3,12 @@
 
 <h1 class="mb-4"><%= @question.title %></h1>
 
-<time class="text-secondary" datetime="<%= @question.formatted_created_at %>">
-  created at: <%= @question.formatted_created_at %>
-</time>
-<br/>
-<time class="text-secondary" datetime="<%= @question.formatted_edited_at %>">
-  edited at: <%= @question.formatted_edited_at %>
-</time>
+<p class="mb-0 text-secondary">
+  created at: <%= l @question.created_at, format: :long %>
+</p>
+<p class="mb-0 text-secondary">
+  edited at: <%= l @question.updated_at, format: :long %>
+</p>
 
 <div class="lead my-3 mb-4">
   <%= sanitize @question.body %>
