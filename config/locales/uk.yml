@@ -1,0 +1,49 @@
+uk:
+  en: "Англійська"
+  uk: "Українська"
+  activerecord:
+    attributes:
+      models:
+        questions: "Питання"
+      question:
+        title: "Заголовок"
+        body: "Текст"
+      answer:
+        body: "Текст"
+  pages:
+    index:
+      title: "Вітаємо у AskIt!"
+  menu:
+    home: "Головна"
+    questions: "Запитання"
+  questions:
+    destroy:
+      success: "Запитання видалено!"
+    update:
+      success: "Запитання оновлено!"
+    create:
+      success: "Запитання створено!"
+    index:
+      title: "Запитання"
+    new:
+      title: "Нове запитання"
+  answers:
+    destroy:
+      success: "Відповідь видалено!"
+    update:
+      success: "Відповідь оновлено!"
+    create:
+      success: "Відповідь створено!"
+  timestamp:
+    created: "Створено"
+    edited: "Оновлено"
+    ago: "тому"
+  buttons:
+    newQuestion: "Нове запитання"
+    newAnswer: "Нова відповідь"
+    delete: "Видалити"
+    edit: "Редагувати"
+    show: "Показати"
+    submitQuestion: "Зберегти запитання!"
+    submitAnswer: "Зберегти відповідь!"
+    confirm: "Ви впевнені?"
