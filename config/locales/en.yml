@@ -1,4 +1,6 @@
 en:
+  en: "English"
+  uk: "Ukrainian"
   activerecord:
     models:
       questions: "Question"
@@ -13,6 +15,7 @@ en:
       title: "Welcome to AskIt!"
   menu:
     home: "Home"
+    questions: "Questions"
   questions:
     destroy:
       success: "Question deleted!"
@@ -20,3 +23,27 @@ en:
       success: "Question updated!"
     create:
       success: "Question created!"
+    index:
+      title: "Questions"
+    new:
+      title: "New question"
+  answers:
+    destroy:
+      success: "Answer deleted!"
+    update:
+      success: "Answer updated!"
+    create:
+      success: "Answer created!"
+  timestamp:
+    created: "Created at"
+    edited: "Edited at"
+    ago: "ago"
+  buttons:
+    newQuestion: "New question"
+    newAnswer: "New answer"
+    delete: "Delete"
+    edit: "Edit"
+    show: "Show"
+    submitQuestion: "Submit question!"
+    submitAnswer: "Submit answer!"
+    confirm: "Are you sure?"
