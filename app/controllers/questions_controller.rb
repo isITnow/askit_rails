@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @pagy, @questions = pagy(Question.all)
+    @pagy, @questions = pagy(Question.includes(:user))
   end
 
   def new
