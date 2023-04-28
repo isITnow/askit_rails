@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
-    @pagy, @answers = pagy(@question.answers.all)
+    @pagy, @answers = pagy(@question.answers.includes(:user))
   end
 
   def destroy
