@@ -2,6 +2,7 @@
 
 module ApplicationHelper
   include Pagy::Frontend
+
   def nav_tab(title, url, options = {})
     current_page = options.delete :current_page
     css_class = current_page == title ? 'text-secondary' : 'text-white'
@@ -26,4 +27,9 @@ module ApplicationHelper
       base_title
     end
   end
+
+  def gravatar(user, size = 30, css_class = '')
+    image_tag user.gravatar_url(size: size), class: "rounded #{css_class}"
+  end
+  
 end
