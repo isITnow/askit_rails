@@ -10,8 +10,11 @@
 
 <% @questions.each do |question| %>
   <article class="card my-3">
-    <h4 class="card-header"><%= question.title %></h2>
+    <section class="card-header">
+      <%= question.user.name %>
+    </section>
     <div class="card-body">
+    <h4><%= link_to question.title, question_path(question) %></h4>
       <section class="card-text mb-4">
         <div class="my-2">
           <%= truncate strip_tags(question.body), length: 140, omission: '... (continued)' %>
