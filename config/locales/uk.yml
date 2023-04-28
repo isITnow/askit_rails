@@ -16,6 +16,10 @@ uk:
   menu:
     home: "Головна"
     questions: "Запитання"
+    signUp: "Зареєструватись"
+    login: "Увійти"
+    logout: "Вийти"
+    editProfile: "Редагувати профіль"
   questions:
     destroy:
       success: "Запитання видалено!"
@@ -27,6 +31,9 @@ uk:
       title: "Запитання"
     new:
       title: "Нове запитання"
+    show:
+      answers: "Відповіді"
+      noAnswers: "Відповіді відсутні"
   answers:
     destroy:
       success: "Відповідь видалено!"

@@ -16,6 +16,10 @@ en:
   menu:
     home: "Home"
     questions: "Questions"
+    signUp: "Sign Up"
+    login: "Log In"
+    logout: "Log Out"
+    editProfile: "Edit profile"
   questions:
     destroy:
       success: "Question deleted!"
@@ -27,6 +31,9 @@ en:
       title: "Questions"
     new:
       title: "New question"
+    show:
+      answers: "Answers"
+      noAnswers: "There are no answers"
   answers:
     destroy:
       success: "Answer deleted!"
