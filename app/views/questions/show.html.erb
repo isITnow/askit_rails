@@ -3,31 +3,41 @@
 
 <h1 class="mb-4"><%= @question.title %></h1>
 
-<p class="mb-0 text-secondary">
-  <%= t('timestamp.created') %>: <%= l @question.created_at, format: :long %>
-</p>
-<p class="mb-0 text-secondary">
-  <%= t('timestamp.edited') %>: <%= l @question.updated_at, format: :long %>
-</p>
+<div class="mb-3">
+  <p class="mb-0 text-secondary">
+    <%= t('timestamp.created') %>: <%= l @question.created_at, format: :long %>
+  </p>
+  <p class="mb-0 text-secondary">
+    <%= t('timestamp.edited') %>: <%= l @question.updated_at, format: :long %>
+  </p>
+</div>
 
-<div class="lead my-3 mb-4">
+<div class="mb-3">
   <%= sanitize @question.body %>
 </div>
 
-<%= link_to t('buttons.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
-<%= link_to t('buttons.delete'), question_path(@question), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+<div class="mb-3">
+  <%= gravatar(@question.user, 30 ) %>
+  <%= @question.user.name %>
+</div>
 
-<hr class="my-4" />
-<h2 class="mb-3">Write your answer</h2>
+<div class="btn-group">
+  <%= link_to t('buttons.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
+  <%= link_to t('buttons.delete'), question_path(@question), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+</div>
 
-<%= render "answers/form" %>
 
-<hr class="my-4" />
-<h2 class="mb-3">Answers</h2>
+<div class="py-3 my-3 border-top border-bottom">
+  <h2 class="mb-3">Write your answer</h2>
+  
+  <%= render "answers/form" %>
+  
+</div>
 
+<h2 class="mb-3"><%= t('.answers') %></h2>
 
 <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 
-<%= render(partial: "answers/answer", collection: @answers, as: :answer, locals: {question: @question}) || "There are no answers" %>
+<%= render(partial: "answers/answer", collection: @answers, as: :answer, locals: {question: @question}) || t('.noAnswers') %>
 
 <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
