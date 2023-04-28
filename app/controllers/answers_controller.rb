@@ -4,10 +4,6 @@ class AnswersController < ApplicationController
   before_action :set_question!
   before_action :set_answer!, except: [:create]
 
-  def index
-    @answers = Answer.all
-  end
-
   def create
     @answer = @question.answers.build answer_params
     if @answer.save
