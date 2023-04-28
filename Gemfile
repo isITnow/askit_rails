@@ -62,6 +62,9 @@ gem 'valid_email2'
 # i18n Localization
 gem 'rails-i18n', '~> 7.0.0'
 
+# Gravatar
+gem 'gravtastic', '~> 3.2', '>= 3.2.6'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
