@@ -11,11 +11,14 @@
       <%= link_to t('buttons.edit'), edit_question_answer_path(question, answer), class: 'btn btn-secondary btn-sm' %>
       <%= link_to t('buttons.delete'), question_answer_path(question, answer), data: {turbo_method: :delete, turbo_confirm: t('buttons.confirm')}, class: 'btn btn-danger btn-sm' %>
     </div>
-    </div>
-    <div class="card-footer text-body-secondary">
-      <small>
-        <%= t('timestamp.created') %> <%= time_ago_in_words(answer.created_at) %> <%= t('timestamp.ago') %>,
-        <%= t('timestamp.edited') %> <%= time_ago_in_words(answer.updated_at) %> <%= t('timestamp.ago') %>
-      </small>
-    </div>
-  </article>
+  </div>
+  <div class="card-footer text-body-secondary">
+    <small>
+      <%= t('timestamp.created') %> <%= time_ago_in_words(answer.created_at) %> <%= t('timestamp.ago') %>,
+      <%= t('timestamp.edited') %> <%= time_ago_in_words(answer.updated_at) %> <%= t('timestamp.ago') %>
+    </small>
+  </div>
+</article>
+
+<%= render 'comments/commentable', commentable: answer, comment: @comment,
+  html_id: dom_id(answer, 'comment_form') %>
