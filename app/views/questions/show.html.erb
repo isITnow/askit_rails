@@ -4,6 +4,11 @@
 <h1 class="mb-4"><%= @question.title %></h1>
 
 <div class="mb-3">
+  <%= gravatar(@question.user, 30 ) %>
+  <%= @question.user.name %>
+</div>
+
+<div class="mb-3">
   <p class="mb-0 text-secondary">
     <%= t('timestamp.created') %>: <%= l @question.created_at, format: :long %>
   </p>
@@ -12,13 +17,8 @@
   </p>
 </div>
 
-<div class="mb-3">
+<div class="mb-3 fs-4">
   <%= sanitize @question.body %>
-</div>
-
-<div class="mb-3">
-  <%= gravatar(@question.user, 30 ) %>
-  <%= @question.user.name %>
 </div>
 
 <div class="btn-group">
