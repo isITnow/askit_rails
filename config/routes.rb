@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
     resources :questions do
       resources :answers, except: %i[show new]
+
+      resources :comments, only: %i[create destroy]
+    end
+
+    resources :answers do
+      resources :comments, only: %i[create destroy]
     end
 
     namespace :admin do
