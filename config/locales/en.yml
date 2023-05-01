@@ -10,6 +10,8 @@ en:
         body: "Body"
       answer:
         body: "Body"
+      comment:
+        body: "Body"
   pages:
     index:
       title: "Welcome to AskIt!"
@@ -34,6 +36,15 @@ en:
     show:
       answers: "Answers"
       noAnswers: "There are no answers"
+      comments: "Comments"
+      answerTitle: "Write your answer"
+  comments:
+    destroy:
+      success: "Comment deleted!"
+    # update:
+    #   success: "Answer updated!"
+    create:
+      success: "Comment created!"
   answers:
     destroy:
       success: "Answer deleted!"
@@ -53,4 +64,6 @@ en:
     show: "Show"
     submitQuestion: "Submit question!"
     submitAnswer: "Submit answer!"
+    submitComment: "Submit comment!"
     confirm: "Are you sure?"
+    comments: "Comments"

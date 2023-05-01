@@ -10,6 +10,8 @@ uk:
         body: "Текст"
       answer:
         body: "Текст"
+      comment:
+        body: "Текст"
   pages:
     index:
       title: "Вітаємо у AskIt!"
@@ -34,6 +36,15 @@ uk:
     show:
       answers: "Відповіді"
       noAnswers: "Відповіді відсутні"
+      comments: "Коментарі"
+      answerTitle: "Напишіть відповідь"
+  comments:
+    destroy:
+      success: "Коментар видалено!"
+    # update:
+    #   success: "Answer updated!"
+    create:
+      success: "Коментар створено!"
   answers:
     destroy:
       success: "Відповідь видалено!"
@@ -53,4 +64,6 @@ uk:
     show: "Показати"
     submitQuestion: "Зберегти запитання!"
     submitAnswer: "Зберегти відповідь!"
+    submitComment: "Зберегти коментар!"
     confirm: "Ви впевнені?"
+    comments: "Коментарі"
