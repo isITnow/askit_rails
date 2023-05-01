@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+  # include QuestionsAnswers
   before_action :set_question!, only: %i[show destroy edit update]
 
   def show
+    # load_question_answers
     @answer = @question.answers.build
     @pagy, @answers = pagy(@question.answers.includes(:user))
   end
