@@ -2,6 +2,7 @@
 
 class Answer < ApplicationRecord
   include Commentable
+  include Authorship
 
   default_scope { order(updated_at: :desc) }
   

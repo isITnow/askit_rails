@@ -100,3 +100,12 @@ uk:
     comments: "Коментарі"
     register: "Зареєструватись!"
     save: "Зберегти"
+  global:
+    # dialog:
+    #   you_sure: Are you sure?
+    flash:
+      already_signed_in: "Ви вже увійшли в систему!"
+      not_signed_in: "Ви не увійшли в систему!"
+      not_authorized: "У Вас немає прав на виконання цієї дії!"
+    # text:
+    #   omission: "... (continued)"

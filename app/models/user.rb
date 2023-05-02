@@ -12,4 +12,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validates :name, presence: true
   validates :role, presence: true
+
+  def author?(obj)
+    obj.user == self
+  end
 end

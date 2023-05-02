@@ -2,8 +2,12 @@
 
 class QuestionsController < ApplicationController
   # include QuestionsAnswers
+  before_action :require_authentication, except: %i[index show]
   before_action :set_question!, only: %i[show destroy edit update]
   before_action :fetch_tags, only: %i[new edit]
+  before_action :authorize_question!
+  before_action :authorize_question!
+  before_action :verify_authorized
 
   def show
     # load_question_answers
@@ -65,5 +69,8 @@ class QuestionsController < ApplicationController
   def fetch_tags
     @tags = Tag.all
   end
-  
+
+  def authorize_question!
+    authorize(@question || Question)
+  end
 end

@@ -100,3 +100,12 @@ en:
     comments: "Comments"
     register: "Register!"
     save: "Save"
+  global:
+    # dialog:
+    #   you_sure: Are you sure?
+    flash:
+      already_signed_in: "You are already signed in!"
+      not_signed_in: "You are not signed in!"
+      not_authorized: "You are not authorized to perform this action!"
+    # text:
+    #   omission: "... (continued)"
