@@ -22,6 +22,37 @@ en:
     login: "Log In"
     logout: "Log Out"
     editProfile: "Edit profile"
+    users: "Users"
+  users:
+    # create:
+    #   success: Welcome to the app, %{name}!
+    edit:
+      title: "Edit profile"
+    # global:
+    #   forms:
+    #     register: Register
+    #     save: Save
+    new:
+      title: "Registration"
+    # update:
+    #   success: Your profile was successfully updated!
+  admin:
+    users:
+      index:
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        created: "Created at"
+      edit:
+        title: "Edit user"
+      update:
+        success: "Profile updated!"
+      destroy:
+        success: "Profile deleted!"
+      roles:
+        basic: "Basic"
+        moderator: "Moderator"
+        admin: "Admin"
   questions:
     destroy:
       success: "Question deleted!"
@@ -67,3 +98,5 @@ en:
     submitComment: "Submit comment!"
     confirm: "Are you sure?"
     comments: "Comments"
+    register: "Register!"
+    save: "Save"

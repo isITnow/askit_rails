@@ -22,6 +22,37 @@ uk:
     login: "Увійти"
     logout: "Вийти"
     editProfile: "Редагувати профіль"
+    users: "Користувачи"
+  users:
+    # create:
+    #   success: Welcome to the app, %{name}!
+    edit:
+      title: "Рудагувати профіль"
+    # global:
+    #   forms:
+    #     register: Register
+    #     save: Save
+    new:
+      title: "Реєстрація"
+    # update:
+    #   success: Your profile was successfully updated!
+  admin:
+    users:
+      index:
+        name: "Імʼя"
+        email: "Пошта"
+        role: "Роль"
+        created: "Створено"
+      edit:
+        title: "Рудагувати профіль"
+      update:
+        success: "Профіль оновлено!"
+      destroy:
+        success: "Профіль видалено!"
+      roles:
+        basic: "Базовий"
+        moderator: "Модератор"
+        admin: "Адмін"
   questions:
     destroy:
       success: "Запитання видалено!"
@@ -67,3 +98,5 @@ uk:
     submitComment: "Зберегти коментар!"
     confirm: "Ви впевнені?"
     comments: "Коментарі"
+    register: "Зареєструватись!"
+    save: "Зберегти"
