@@ -22,7 +22,7 @@ uk:
     login: "Увійти"
     logout: "Вийти"
     editProfile: "Редагувати профіль"
-    users: "Користувачи"
+    users: "Користувачі"
   users:
     # create:
     #   success: Welcome to the app, %{name}!

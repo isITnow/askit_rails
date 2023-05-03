@@ -1,7 +1,7 @@
-<% provide :page_title, 'Admin Users' %>
-<% currently_at 'Users' %>
+<% provide :page_title, t('menu.users') %>
+<% currently_at t('menu.users') %>
 
-<h1 class="mb-4">Admin Users</h1>
+<h1 class="mb-4"><%= t('menu.users') %></h1>
 
 <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 
