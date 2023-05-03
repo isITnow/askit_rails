@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
   before_action :set_question!
   before_action :set_answer!, except: [:create]
   before_action :authorize_answer!
-  before_action :verify_authorized
+  after_action :verify_authorized
 
   def create
     @answer = @question.answers.build answer_create_params
