@@ -2,9 +2,11 @@
 
 class AnswersController < ApplicationController
   # include QuestionsAnswers
-  
+  before_action :require_authentication, except: %i[index show]
   before_action :set_question!
   before_action :set_answer!, except: [:create]
+  before_action :authorize_answer!
+  before_action :verify_authorized
 
   def create
     @answer = @question.answers.build answer_create_params
@@ -51,5 +53,9 @@ class AnswersController < ApplicationController
 
   def answer_update_params
     params.require(:answer).permit(:body)
+  end
+
+  def authorize_answer!
+    authorize(@answer || Answer)
   end
 end

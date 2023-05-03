@@ -1,16 +1,27 @@
-<article class="mb-3 card" id="answer-<%= answer.id %>">
+<article class="my-3 card" id="answer-<%= answer.id %>">
   <section class="card-header">
     <%= gravatar(answer.user, 30, "me-2") %>
     <%= answer.user.name %>
   </section>
   <div class="card-body">
-    <div class="card-text mb-4">
+    <div class="card-text">
       <%= sanitize answer.body %>
     </div>
-    <div class="btn-group">
-      <%= link_to t('buttons.edit'), edit_question_answer_path(question, answer), class: 'btn btn-secondary btn-sm' %>
-      <%= link_to t('buttons.delete'), question_answer_path(question, answer), data: {turbo_method: :delete, turbo_confirm: t('buttons.confirm')}, class: 'btn btn-danger btn-sm' %>
-    </div>
+    
+    <% if policy(answer).edit? %>
+      <div class="btn-group mt-4">
+        <% if policy(answer).edit? %>
+          <%= link_to t('buttons.edit'), edit_question_answer_path(question, answer), class: 'btn btn-secondary btn-sm' %>
+        <% end %>
+
+        <% if policy(answer).destroy? %>
+          <%= link_to t('buttons.delete'), question_answer_path(question, answer),
+            data: {turbo_method: :delete, turbo_confirm: t('buttons.confirm')}, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </div>
+    <% end %>
+    
+    
   </div>
   <div class="card-footer text-body-secondary">
     <small>
