@@ -1,6 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :require_authentication
   before_action :set_user!, only: %i[edit update destroy]
+  before_action :authorize_user!
+  after_action  :verify_authorized
 
   def index
     @pagy, @users = pagy User.order(updated_at: :desc)
@@ -34,5 +36,9 @@ class Admin::UsersController < ApplicationController
       params.require(:user).permit(
         :email, :name, :password, :password_confirmation, :role
       )
+  end
+
+  def authorize_user!
+    authorize([:admin, (@user || User)])
   end
 end
