@@ -52,4 +52,5 @@
   </div>
 
   <%= f.submit (user.new_record? ? t('buttons.register') : t('buttons.save')), class: 'btn btn-primary btn-lg' %>
+  <%= link_to 'back', admin_users_path, class: 'btn btn-small btn-secondary' %>
 <% end %>
