@@ -21,10 +21,7 @@
   <%= sanitize @question.body %>
 </div>
 
-<%= render 'comments/commentable', commentable: @question, comment: @comment,
-  html_id: 'questionComments'  %>
-
-<div class=" pt-3 mt-3">
+<div class="my-3">
   <div class="btn-group">
     <% if policy(@question).edit? %>
       <%= link_to t('buttons.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
@@ -36,6 +33,10 @@
     <% end %>
   </div>
 </div>
+
+<%= render 'comments/commentable', commentable: @question, comment: @comment,
+  html_id: 'questionComments'  %>
+
 
 <div class="py-3 my-3 border-top border-bottom">
   <h2 class="mb-3"><%= t('.answerTitle') %></h2>

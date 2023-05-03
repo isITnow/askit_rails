@@ -5,9 +5,12 @@ class CommentsController < ApplicationController
 
   before_action :set_commentable!
   before_action :set_question
+  after_action :verify_authorized
 
   def create
     @comment = @commentable.comments.build comment_params
+    authorize @comment
+
     if @comment.save 
       flash[:success] = t('.success')
       redirect_to question_path(@question)
@@ -20,6 +23,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = @commentable.comments.find params[:id]
+    authorize comment
     comment.destroy
     flash[:success] = t '.success'
     redirect_to question_path(@question)
@@ -28,7 +32,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body).merge(user_id: current_user.id)
+    params.require(:comment).permit(:body).merge(user: current_user)
   end
 
   def set_commentable!
@@ -41,5 +45,4 @@ class CommentsController < ApplicationController
   def set_question
     @question = @commentable.is_a?(Question) ? @commentable : @commentable.question
   end
-  
 end
