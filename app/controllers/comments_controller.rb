@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build comment_params
     authorize @comment
 
-    if @comment.save 
+    if @comment.save
       flash[:success] = t('.success')
       redirect_to question_path(@question)
     else
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
 
     @commentable = klass.find(params["#{klass.name.underscore}_id"])
   end
-  
+
   def set_question
     @question = @commentable.is_a?(Question) ? @commentable : @commentable.question
   end

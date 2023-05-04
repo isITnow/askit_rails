@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
     # variant 1
     # @question = Question.new question_params
     # @question.user_id = current_user.id
-      # variant 2
+    # variant 2
     @question = current_user.questions.build question_params
     if @question.save
       flash[:success] = t('.success')

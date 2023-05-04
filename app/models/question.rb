@@ -3,7 +3,7 @@
 class Question < ApplicationRecord
   include Authorship
   include Commentable
-  
+
   has_many :answers, dependent: :destroy
   belongs_to :user
   has_many :question_tags, dependent: :destroy
@@ -26,16 +26,15 @@ class Question < ApplicationRecord
   #   questions.order(updated_at: :desc)
   # end
 
-  scope :all_by_tags, ->(tags) do
+  scope :all_by_tags, lambda { |tags|
     questions = includes(:user)
-    
-    if tags
-      questions = questions.joins(:tags).where(tags: tags).preload(:tags)
-    else
-      questions = questions.includes(:question_tags, :tags)
-    end
-    
-    questions.order(updated_at: :desc)
-  end
 
+    questions = if tags
+                  questions.joins(:tags).where(tags:).preload(:tags)
+                else
+                  questions.includes(:question_tags, :tags)
+                end
+
+    questions.order(updated_at: :desc)
+  }
 end

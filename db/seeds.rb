@@ -17,11 +17,10 @@
 #   title = Faker::Hipster.word
 #   Tag.create title:
 
-  # x =  1
-  # while x < 12  do
-  #   name = "Test User #{x}"
-  #   email = "user#{x}@example.com"
-  #   User.create(name: name, email: email, password: "password", password_confirmation: "password")
-  #   x +=1 
-  # end
-
+# x =  1
+# while x < 12  do
+#   name = "Test User #{x}"
+#   email = "user#{x}@example.com"
+#   User.create(name: name, email: email, password: "password", password_confirmation: "password")
+#   x +=1
+# end

@@ -29,7 +29,6 @@ module ApplicationHelper
   end
 
   def gravatar(user, size = 30, css_class = '')
-    image_tag user.gravatar_url(size: size), class: "rounded #{css_class}"
+    image_tag user.gravatar_url(size:), class: "rounded #{css_class}"
   end
-  
 end

@@ -46,6 +46,7 @@ class AnswersController < ApplicationController
   def set_answer!
     @answer = @question.answers.find params[:id]
   end
+
   # for create params hash merge hash with user_id key
   def answer_create_params
     params.require(:answer).permit(:body).merge(user_id: current_user.id)

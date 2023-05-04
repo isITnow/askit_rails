@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuestionPolicy < ApplicationPolicy
   def create?
     user.present?
@@ -18,5 +20,4 @@ class QuestionPolicy < ApplicationPolicy
   def show?
     true
   end
-
 end
