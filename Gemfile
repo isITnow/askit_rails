@@ -56,9 +56,6 @@ gem 'sassc-rails'
 # Implement pagination
 gem 'pagy', '~> 6.0'
 
-# Implement email validation
-gem 'valid_email2'
-
 # i18n Localization
 gem 'rails-i18n', '~> 7.0.0'
 
