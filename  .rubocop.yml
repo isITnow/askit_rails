@@ -1,10 +1,25 @@
 require:
   - rubocop-performance
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.1.1
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+Layout/LineLength:
+  Exclude:
+    - spec/**/*.rb
+
 Style/Documentation:
-  Enabled: true
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/ExampleLength:
+  Max: 20
