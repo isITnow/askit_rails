@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
 
   def show
     # load_question_answers
+    @question.update(views: @question.views + 1)
     @answer = @question.answers.build
     @pagy, @answers = pagy(@question.answers.includes(:user))
   end
@@ -35,6 +36,11 @@ class QuestionsController < ApplicationController
     @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
     # @tags = Tag.where(id: params[:tag_ids]) if params[:tag_ids]
     # @pagy, @questions = pagy Question.all_by_tags(@tags)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @questions, status: :ok  }
+    end
   end
 
   def new
