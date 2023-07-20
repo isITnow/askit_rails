@@ -35,6 +35,6 @@ class Question < ApplicationRecord
                   questions.includes(:question_tags, :tags)
                 end
 
-    questions.order(updated_at: :desc)
+    questions.order(created_at: :desc)
   }
 end
