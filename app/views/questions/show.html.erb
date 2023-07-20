@@ -17,6 +17,16 @@
   </p>
 </div>
 
+<div class="mb-3">
+  <p>Statistics:</p>
+  <p class="mb-0 text-secondary">
+    <%= pluralize( @question.views, 'view' ) %>
+  </p>
+  <p class="mb-0 text-secondary">
+    <%= pluralize( @question.answers.count, 'answer' ) %>
+  </p>
+</div>
+
 <div class="mb-3 fs-4">
   <%= sanitize @question.body %>
 </div>

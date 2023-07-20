@@ -27,7 +27,15 @@
       <% end %>
     </div>
 
-    <div class="card-footer text-body-secondary">
+    <div class="card-footer text-body-secondary d-flex justify-content-between">
+      <div>
+        <small class="me-3">
+          <%= pluralize( question.views, 'view' ) %>
+        </small>
+        <small>
+          <%= pluralize( question.answers.count, 'answer' ) %>
+        </small>
+      </div>
       <small>
         <%= t('timestamp.created') %> <%= time_ago_in_words(question.created_at) %> <%= t('timestamp.ago') %>,
         <%= t('timestamp.edited') %> <%= time_ago_in_words(question.updated_at) %> <%= t('timestamp.ago') %>
