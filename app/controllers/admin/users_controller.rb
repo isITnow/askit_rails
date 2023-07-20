@@ -6,6 +6,10 @@ class Admin::UsersController < ApplicationController
 
   def index
     @pagy, @users = pagy User.order(updated_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json {render json: @users, status: :ok}
+    end
   end
 
   def edit; end
