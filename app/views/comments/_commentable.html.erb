@@ -1,8 +1,16 @@
 <% comment_builder = commentable.comments.build %>
 <% html_id = dom_id commentable, "comments" %>
+<% comments_count = commentable.comments.count %>
 
-<%= link_to t('buttons.comments'), "##{html_id}",
-  class: 'btn btn-primary', data: {'bs-toggle': 'collapse'} %>
+<%= link_to  "##{html_id}",
+  class: 'btn btn-primary  position-relative', data: {'bs-toggle': 'collapse'} do %>
+  <%= t('buttons.comments') %>
+  <% if comments_count.positive? %>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <%= comments_count %>
+    </span>
+  <% end %>
+<% end %>
 
 <%= turbo_frame_tag "#{dom_id(commentable)}_#{dom_id(comment_builder)}" do %>
   <%= tag.div class: "collapse", id: html_id do %>
