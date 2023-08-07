@@ -1,36 +1,38 @@
-<%= render 'layouts/shared/errors', object: @question %>
+<%= turbo_frame_tag @question do %>
+  <%= form_with model: @question do |f| %>
+    <%= render 'layouts/shared/errors', object: @question %>
 
-<%= form_with model: @question do |f| %>
-  <div class="mb-3 row">
-    <div class="col-sm-2 col-form-label">
-      <%= f.label :title %>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= f.label :title %>
+      </div>
+
+      <div class="col-sm-10">
+        <%= f.text_field :title, placeholder: t('activerecord.attributes.question.title'), class: 'form-control' %>
+      </div>
     </div>
 
-    <div class="col-sm-10">
-      <%= f.text_field :title, placeholder: t('activerecord.attributes.question.title'), class: 'form-control' %>
-    </div>
-  </div>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= f.label :body %>
+      </div>
 
-  <div class="mb-3 row">
-    <div class="col-sm-2 col-form-label">
-      <%= f.label :body %>
-    </div>
-
-    <div class="col-sm-10">
-      <%= f.text_area :body, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="mb-3 row">
-    <div class="col-sm-2 col-form-label">
-      <%= f.label :tags %>
+      <div class="col-sm-10">
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
     </div>
 
-    <div class="col-sm-10">
-      <%= f.collection_select(:tag_ids, tags, :id, :title, {}, { multiple: true, size: 3, class: "form-select" }) %>
-    </div>
-  </div>
+    <div class="mb-3 row">
+      <div class="col-sm-2 col-form-label">
+        <%= f.label :tags %>
+      </div>
 
-  <%= f.submit t('buttons.submitQuestion'), class: 'btn btn-primary' %>
-  <%= link_to 'back', (@question.new_record? ? questions_path :  question_path(@question)), class: 'btn btn-small btn-secondary' %>
+      <div class="col-sm-10">
+        <%= f.collection_select(:tag_ids, tags, :id, :title, {}, { multiple: true, size: 3, class: "form-select" }) %>
+      </div>
+    </div>
+
+    <%= f.submit t('buttons.submitQuestion'), class: 'btn btn-primary' %>
+    <%= link_to 'back', (@question.new_record? ? questions_path :  question_path(@question)), class: 'btn btn-small btn-secondary' %>
+  <% end %>
 <% end %>

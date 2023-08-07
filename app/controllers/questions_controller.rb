@@ -54,10 +54,19 @@ class QuestionsController < ApplicationController
     # variant 2
     @question = current_user.questions.build question_params
     if @question.save
-      flash[:success] = t('.success')
-      redirect_to questions_path
+      respond_to do |format|
+        format.html do
+          flash[:success] = t('.success')
+          redirect_to questions_path
+        end
+
+        format.turbo_stream do
+          flash.now[:success] = t('.success')
+          @question
+        end
+      end
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
