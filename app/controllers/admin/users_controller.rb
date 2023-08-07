@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
       flash[:success] = t '.success'
       redirect_to admin_users_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
