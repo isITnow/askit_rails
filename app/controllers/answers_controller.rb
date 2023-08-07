@@ -11,8 +11,17 @@ class AnswersController < ApplicationController
   def create
     @answer = @question.answers.build answer_create_params
     if @answer.save
-      flash[:success] = t('.success')
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html do
+          flash[:success] = t('.success')
+          redirect_to question_path(@question)
+        end
+
+        format.turbo_stream do
+          flash.now[:success] = t('.success')
+          @answer
+        end
+      end
     else
       # load_question_answers(do_render: true)
       @pagy, @answers = pagy(@question.answers.includes(:user))
@@ -24,8 +33,18 @@ class AnswersController < ApplicationController
 
   def update
     if @answer.update answer_update_params
-      flash[:success] = t('.success')
-      redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
+      respond_to do |format|
+        format.html do
+          flash[:success] = t('.success')
+          redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
+        end
+
+        format.turbo_stream do
+          @answer
+          flash.now[:success] = t('.success')
+        end
+      end
+
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,8 +52,14 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-    flash[:success] = t('.success')
-    redirect_to question_path(@question)
+    respond_to do |format|
+      format.html do
+        flash[:success] = t('.success')
+        redirect_to question_path(@question), status: :see_other
+      end
+
+      format.turbo_stream { flash.now[:success] = t('.success') }
+    end
   end
 
   private

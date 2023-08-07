@@ -59,6 +59,9 @@
 
 <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 
-<%= render(partial: "answers/answer", collection: @answers, as: :answer, locals: {question: @question}) || t('.noAnswers') %>
+<%= turbo_frame_tag "answers" do %>
+  <%= render(partial: "answers/answer", collection: @answers, as: :answer,
+              locals: {question: @question}) || t('.noAnswers') %>
+<% end %>
 
 <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
