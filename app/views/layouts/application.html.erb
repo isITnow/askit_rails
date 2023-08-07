@@ -13,9 +13,9 @@
   <body>
     <%= yield :main_menu %>
     <main class="container py-4">
-      <% flash.each do |k, v| %>
-        <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
-      <% end %>
+      <div id="flash">
+        <%= render "layouts/shared/flash" %>
+      </div>
       <%= yield %>
     </main>
   </body>
