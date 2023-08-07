@@ -12,8 +12,14 @@ class CommentsController < ApplicationController
     authorize @comment
 
     if @comment.save
-      flash[:success] = t('.success')
-      redirect_to question_path(@question)
+      respond_to do |format|
+        format.html do
+          flash[:success] = t('.success')
+          redirect_to question_path(@question)
+        end
+
+        format.turbo_stream { flash.now[:success] = t('.success') }
+      end
     else
       # load_question_answers do_render: true
       @pagy, @answers = pagy(@question.answers.includes(:user))
@@ -22,11 +28,18 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = @commentable.comments.find params[:id]
-    authorize comment
-    comment.destroy
-    flash[:success] = t '.success'
-    redirect_to question_path(@question)
+    @comment = @commentable.comments.find params[:id]
+    authorize @comment
+
+    @comment.destroy
+    respond_to do |format|
+      format.html do
+        flash[:success] = t '.success'
+        redirect_to question_path(@question)
+      end
+
+      format.turbo_stream { flash.now[:success] = t('.success') }
+    end
   end
 
   private
