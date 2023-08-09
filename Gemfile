@@ -69,6 +69,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -80,10 +81,4 @@ group :development do
   gem 'rubocop', '~> 1.50', require: false
   gem 'rubocop-performance', '~> 1.17', require: false
   gem 'rubocop-rails', require: false
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
