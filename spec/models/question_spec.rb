@@ -36,4 +36,19 @@ RSpec.describe Question, type: :model do
     question.body = '1'
     expect(question).to_not be_valid
   end
+
+  describe 'validations' do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:body) }
+
+    it { should validate_length_of(:title).is_at_least(2) }
+    it { should validate_length_of(:body).is_at_least(2) }
+  end
+
+  describe 'associations' do
+    it { should have_many(:answers).class_name('Answer').dependent(:destroy) }
+    it { should belong_to(:user).class_name('User') }
+    it { should have_many(:question_tags).dependent(:destroy)}
+    it { should have_many(:tags).class_name('Tag').through(:question_tags) }
+  end
 end
