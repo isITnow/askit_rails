@@ -1,28 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    let(:user) { User.new name: 'John Doe', email: 'jdoe@example.com', password: 'password' }
-  it 'returns user name' do
-    expect(user.name).to eq('John Doe')
-  end
+  subject { build(:user) }
 
-  it 'returns user email' do
-    expect(user.email).to eq('jdoe@example.com')
-  end
+  # it 'returns user name' do
+  #   subject.name = 'John Doe'
+  #   expect(subject.name).to eq('John Doe')
+  # end
 
-  it "is valid with valid attributes" do
-    expect(user).to be_valid
-  end
-
-  it "is not valid without a name" do
-    user.name=nil
-    expect(user).to_not be_valid
-  end
-
-  it "is not valid without a email" do
-    user.email=nil
-    expect(user).to_not be_valid
-  end
+  # it 'returns user email' do
+  #   expect(subject.email).to eq('jdoe@example.com')
+  # end
 
   describe "attributes" do
     it { should define_enum_for(:role) }
@@ -37,7 +25,24 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
-    # it { should validate_uniqueness_of(:email) }
     it { should validate_presence_of(:role) }
+    it { should validate_uniqueness_of(:email) }
+  end
+
+  context "when creating a user" do
+    it "is valid with valid attributes" do
+      expect(subject.valid?).to eq(true)
+    end
+
+    it "is not valid without a name" do
+      subject.name=nil
+      expect(subject).to_not be_valid
+    end
+
+    it "is not valid without a email" do
+      subject.email=nil
+      expect(subject).to_not be_valid
+    end
   end
 end
+
