@@ -71,11 +71,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  # Generates fake text data
+  gem 'faker', '~> 3'
 end
 
 group :development do
-  # Generates fake text data
-  gem 'faker', '~> 3'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
   # RuboCop
