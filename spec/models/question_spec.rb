@@ -50,5 +50,6 @@ RSpec.describe Question, type: :model do
     it { should belong_to(:user).class_name('User') }
     it { should have_many(:question_tags).dependent(:destroy)}
     it { should have_many(:tags).class_name('Tag').through(:question_tags) }
+    it { should have_many(:comments).class_name('Comment') }
   end
 end
