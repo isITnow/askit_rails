@@ -4,7 +4,7 @@ RSpec.describe Answer, type: :model do
   subject { build(:answer) } 
 
   describe 'associations' do
-    it { should have_many(:comments).class_name('Comment') }
+    it { should have_many(:comments).class_name('Comment').dependent(:destroy) }
     it { should belong_to(:user).class_name('User') }
     it { should belong_to(:question).class_name('Question') }
   end
