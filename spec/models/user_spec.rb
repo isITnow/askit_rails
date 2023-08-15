@@ -3,14 +3,25 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
-  # it 'returns user name' do
-  #   subject.name = 'John Doe'
-  #   expect(subject.name).to eq('John Doe')
-  # end
-
-  # it 'returns user email' do
-  #   expect(subject.email).to eq('jdoe@example.com')
-  # end
+  describe "role" do
+    context "when not specified" do
+      it "has basic role as default" do
+        expect(subject.role).to eq('basic')
+      end
+    end
+    context "when specified as admin" do
+      subject { build(:user, role: 2) }
+      it "has admin role" do
+        expect(subject.role).to eq('admin')
+      end
+    end
+    context "when specified as moderator" do
+      subject { build(:user, role: 1) }
+      it "has moderator role" do
+        expect(subject.role).to eq('moderator')
+      end
+    end
+  end
 
   describe "attributes" do
     it { should define_enum_for(:role) }
