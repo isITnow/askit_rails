@@ -46,14 +46,25 @@ RSpec.describe User, type: :model do
     end
 
     it "is not valid without a name" do
-      subject.name=nil
+      subject.name = nil
       expect(subject).to_not be_valid
     end
 
     it "is not valid without a email" do
-      subject.email=nil
+      subject.email = nil
       expect(subject).to_not be_valid
     end
+
+    it "is valid with a valid role" do
+      subject.role = 2
+      expect(subject).to be_valid
+    end
+
+    # TODO add failure test for this issue
+    # it "is not valid with invalid role" do
+    #   subject.role = 5
+    #   expect { subject }.to raise_error(ArgumentError)
+    # end
   end
 end
 
