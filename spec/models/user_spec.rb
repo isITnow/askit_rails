@@ -3,14 +3,25 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
-  # it 'returns user name' do
-  #   subject.name = 'John Doe'
-  #   expect(subject.name).to eq('John Doe')
-  # end
-
-  # it 'returns user email' do
-  #   expect(subject.email).to eq('jdoe@example.com')
-  # end
+  describe "role" do
+    context "when not specified" do
+      it "has basic role as default" do
+        expect(subject.role).to eq('basic')
+      end
+    end
+    context "when specified as admin" do
+      subject { build(:user, role: 2) }
+      it "has admin role" do
+        expect(subject.role).to eq('admin')
+      end
+    end
+    context "when specified as moderator" do
+      subject { build(:user, role: 1) }
+      it "has moderator role" do
+        expect(subject.role).to eq('moderator')
+      end
+    end
+  end
 
   describe "attributes" do
     it { should define_enum_for(:role) }
@@ -35,14 +46,25 @@ RSpec.describe User, type: :model do
     end
 
     it "is not valid without a name" do
-      subject.name=nil
+      subject.name = nil
       expect(subject).to_not be_valid
     end
 
     it "is not valid without a email" do
-      subject.email=nil
+      subject.email = nil
       expect(subject).to_not be_valid
     end
+
+    it "is valid with a valid role" do
+      subject.role = 2
+      expect(subject).to be_valid
+    end
+
+    # TODO add failure test for this issue
+    # it "is not valid with invalid role" do
+    #   subject.role = 5
+    #   expect { subject }.to raise_error(ArgumentError)
+    # end
   end
 end
 
